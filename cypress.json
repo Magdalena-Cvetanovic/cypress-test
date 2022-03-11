@@ -1,0 +1,6 @@
+{
+    "watchForFileChanges": false,
+    "chromeWebSecurity" : false,
+    "numTestsKeptInMemory": 3
+    
+}
