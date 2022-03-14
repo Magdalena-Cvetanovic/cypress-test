@@ -13,3 +13,6 @@ export function validateAnElementIsVisible(element){
 export function validateAnElementIsNotVisible(element){
     cy.get(element).should('not.exist')
 }
+export function validateAnElementIsChecked(element){
+    cy.get(element).should('be.checked')
+}

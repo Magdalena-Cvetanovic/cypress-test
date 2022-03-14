@@ -24,3 +24,9 @@ export function hoverToProductAndClickAddToCompare(array){
 export function clickCompareBtn(){
     cy.get('.bt_compare_bottom').click()
 }
+export function checkTermsOfService(){
+    cy.get('#cgv').click()
+}
+export function choosePayment(paymentMethod){
+    cy.get(`[title = "Pay by ${paymentMethod}"]`).click()
+}

@@ -4,8 +4,8 @@ import { fillOutCreationForm } from "../../page-objects/account-creation-actions
 import { createNewAccount, proceedToCheckout, signIn } from "../../page-objects/checkout-page-actions"
 import { clickDresses, conductSearch } from "../../page-objects/home-page-actions"
 import { addToCartBiggerDiscountDress, chooseColor, chooseSize, clickAddToCart, clickContinueShopping, clickOkToCloseModal, clickToProceedToCheckout, getProductsToCompare, sendToAFriend } from "../../page-objects/product-page-actions"
-import { clickCompareBtn, collectElementsWithDiscount, hoverToProductAndClickAddToCompare, openFirstProduct } from "../../page-objects/search-result-page-actions"
-import { validateAnElementContainsText, validateAnElementIsNotVisible, validateAnElementIsVisible, validateTheUrlHasChanged } from "../../page-objects/validations"
+import { checkTermsOfService, choosePayment, clickCompareBtn, collectElementsWithDiscount, hoverToProductAndClickAddToCompare, openFirstProduct } from "../../page-objects/search-result-page-actions"
+import { validateAnElementContainsText, validateAnElementIsChecked, validateAnElementIsNotVisible, validateAnElementIsVisible, validateTheUrlHasChanged } from "../../page-objects/validations"
 
 describe("Should test shopping flow", ()=>{
 
@@ -82,6 +82,19 @@ describe("Should test shopping flow", ()=>{
         validateTheUrlHasChanged('step=1')
 
     })
+    it('should complete the checkout process', ()=>{
+        cy.scrollTo('center')
+        proceedToCheckout()
+        validateAnElementContainsText('h1', 'Shipping')
+        checkTermsOfService()
+        validateAnElementIsChecked('#cgv')
+        proceedToCheckout()
+        validateAnElementContainsText('h1', 'payment method')
+        choosePayment('check.')
+        validateAnElementContainsText('.navigation_page', 'Check')
+        proceedToCheckout()
+        validateAnElementContainsText('.navigation_page', 'Order confirmation')
+        
+    })
        
 })
-
