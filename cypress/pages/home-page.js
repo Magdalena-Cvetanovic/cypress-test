@@ -1,11 +1,17 @@
-import HomePageElements from "../page-elements/home-page-elements";
+///<reference types= "cypress"/>
+import HomePageElements from '../page-elements/home-page-elements'
+import Validaitons from '../support/validations'
 
-export default class HomePage extends HomePageElements{
-
-    conductSearch(param){
-        cy.get(this.getSearchBar).type(`${param}{enter}`)
+export default class HomePage{
+    pageElements = new HomePageElements()
+    validations = new Validaitons()
+    
+    conductSearch(searchCriteria){
+        cy.get(this.pageElements.getSearchBar()).type(`${searchCriteria}{enter}`)
+        this.validations.validateTheUrlHasChanged(searchCriteria)
     }
+
     clickDressesLink(){
-        cy.get(this.getDressesLink).click()
+        cy.get(this.pageElements.clickDressesLink()).click()
     }
 }
