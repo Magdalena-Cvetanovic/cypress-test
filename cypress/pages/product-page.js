@@ -17,7 +17,7 @@ export default class ProductPage{
         cy.get(this.elementsPage.getFriendsEmailInut()).type(email)
     }
     clickSend(){
-        cy.get(this.elementsPage.getSendBtn()).click()
+        cy.get(this.elementsPage.getSendBtn()).click().wait(2000)
     }
     clickOk(){
         cy.get(this.elementsPage.getModalOkBtn()).click()
@@ -29,6 +29,16 @@ export default class ProductPage{
         this.validations.validateAnElementContainsText(this.elementsPage.getModalText,text)
         this.clickSend()
         this.clickOk()
+        this.validations.validateAnElementIsNotVisible(this.elementsPage.getModal())
+    }
+    chooseColor(color){
+        cy.get(this.elementsPage.getColors(color)).click()
+    }
+    chooseSize(size){
+        cy.get(this.elementsPage.getSizes()).select(size)
+    }
+    clickAddToCart(){
+        cy.get(this.elementsPage.getAddToCartBtn()).click()
     }
 
 }

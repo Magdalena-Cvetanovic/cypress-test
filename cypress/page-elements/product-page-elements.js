@@ -7,10 +7,9 @@ export default class ProductPageElements{
     sendBtn = '#sendEmail'
     modalOkBtn = '[value=OK]'
     sizes = '#group_1'
-    // colors = `#color_to_pick_list [title=${color}]`
     addToCartBtn = '#add_to_cart>button'
-   modalText = '.fancybox-inner > h2'
-   modal = '.fancybox-skin'
+    modalText = '.fancybox-inner > h2'
+    modal = '.fancybox-skin'
 
     getSendToAFriendBtn(){
         return this.sendToAFriendBtn
@@ -30,8 +29,8 @@ export default class ProductPageElements{
     getSizes(){
         return this.sizes
     }
-    getColors(){
-        return this.colors
+    getColors(color){
+        return `#color_to_pick_list [title=${color}]`
     }
     getAddToCartBtn(){
         return this.addToCartBtn
