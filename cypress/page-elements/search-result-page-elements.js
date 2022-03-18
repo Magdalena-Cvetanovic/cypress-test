@@ -8,19 +8,5 @@ export default class SearchResultPageElements{
     compareBtn = '.bt_compare_bottom'
     productsWithDiscount = []
 
-    getFirstProduct(){
-        return this.firstProduct
-    }
-    getListOfProducts(){
-        return this.listOfSearchResults
-    }
-    getProductsWithDiscount(){
-        return this.productsWithDiscount
-    }
-    getAddToCompareBtn(){
-        return this.addToCompareBtn
-    }
-    getCompareBtn(){
-        return this.compareBtn
-    }
+
 }

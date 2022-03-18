@@ -1,6 +1,9 @@
 ///<reference types= "cypress"/>
 
 export default class Validaitons{
+
+  navitationText = '.breadcrumb'
+
   validateTheUrlHasChanged(param){
     cy.on("url:changed", (newUrl)=>{
         expect(newUrl).to.contain(param)
@@ -20,6 +23,9 @@ export default class Validaitons{
 }
   validateAnElementHasText(element, text){
     cy.get(element).should('have.text', text)
+  }
+  validateTheUserIsOnTheCorrectPage(text){
+    cy.get(this.navitationText).should('contain.text', text)
   }
 
 }

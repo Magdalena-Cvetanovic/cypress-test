@@ -28,7 +28,7 @@ export default class SearchResultPage extends Validaitons {
     collectElementsWithDiscount(){
         this.getListOfProducts().each(($el) => {
             if($el.text().includes('-') && $el.text().includes('%')){
-                this.elementPage.getProductsWithDiscount().push($el)
+                this.elementPage.productsWithDiscount.push($el)
             }
         })
     }
@@ -39,7 +39,13 @@ export default class SearchResultPage extends Validaitons {
         })
     }
     clickCompareBtn(){
-        cy.get(this.getCompareBtn()).click()
+        this.getCompareBtn().click()
+    }
+    chooseTwoDressesToCompareAndValidate(){
+        this.collectElementsWithDiscount()
+        this.hoverToProductAndClickAddToCompare()
+        this.validateAnElementContainsText(this.elementPage.compareBtn, 2)
+        this.clickCompareBtn()
     }
 
 
