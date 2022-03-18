@@ -27,7 +27,7 @@ describe("Should test shopping flow", ()=>{
         searchResultPage.openFirstProductAndValidate()
     })
     it('should recommend to a friend', ()=>{
-        productPage.conductSendToAFriend('someone','else@elsewhere.com','Send to a friend')
+        productPage.conductSendToAFriendAndValidate('someone','else@elsewhere.com','Send to a friend')
     })
     it('should choose color, size, and add to cart', ()=>{
         const color = 'Blue'

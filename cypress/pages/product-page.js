@@ -3,42 +3,65 @@
 import ProductPageElements from "../page-elements/product-page-elements";
 import Validaitons from "../support/validations";
 
-export default class ProductPage{
+export default class ProductPage extends Validaitons{
     elementsPage = new ProductPageElements()
-    validations = new Validaitons()
 
+    getSendToAFriendBtn(){
+        return cy.get(this.elementsPage.sendToAFriendBtn)
+    }
+    getFriendsNameInput(){
+        return cy.get(this.elementsPage.friendsNameInput)
+    }
+    getFriendsEmailInut(){
+        return cy.get(this.elementsPage.friendsEmailInput)
+    }
+    getSendBtn(){
+        return cy.get(this.elementsPage.sendBtn)
+    }
+    getModalOkBtn(){
+        return cy.get(this.elementsPage.modalOkBtn)
+    }
+    getColors(color){
+        return cy.get(this.elementsPage.getColors(color))
+    }
+    getSizes(){
+        return cy.get(this.elementsPage.sizes)
+    }
+    getAddToCartBtn(){
+        return cy.get(this.elementsPage.addToCartBtn)
+    }
     clickSendToAFriend(){
-        cy.get(this.elementsPage.getSendToAFriendBtn()).click()
+        this.getSendToAFriendBtn().click()
     }
     enterFriendsName(name){
-        cy.get(this.elementsPage.getFriendsNameInput()).type((name))
+        this.getFriendsNameInput().type((name))
     }
     enterFriendsEmail(email){
-        cy.get(this.elementsPage.getFriendsEmailInut()).type(email)
+        this.getFriendsEmailInut().type(email)
     }
     clickSend(){
-        cy.get(this.elementsPage.getSendBtn()).click().wait(2000)
+        this.getSendBtn().click().wait(3000)
     }
     clickOk(){
-        cy.get(this.elementsPage.getModalOkBtn()).click()
+        this.getModalOkBtn().click()
     }
-    conductSendToAFriend(name,email,text){
+    conductSendToAFriendAndValidate(name,email,text){
         this.clickSendToAFriend()
         this.enterFriendsName(name)
         this.enterFriendsEmail(email)
-        this.validations.validateAnElementContainsText(this.elementsPage.getModalText(),text)
+        this.validateAnElementContainsText(this.elementsPage.modalText,text)
         this.clickSend()
         this.clickOk()
-        this.validations.validateAnElementIsNotVisible(this.elementsPage.getModal())
+        this.validateAnElementIsNotVisible(this.elementsPage.modal)
     }
     chooseColor(color){
-        cy.get(this.elementsPage.getColors(color)).click()
+        this.getColors(color).click()
     }
     chooseSize(size){
-        cy.get(this.elementsPage.getSizes()).select(size)
+        this.getSizes().select(size)
     }
     clickAddToCart(){
-        cy.get(this.elementsPage.getAddToCartBtn()).click()
+        this.getAddToCartBtn().click()
     }
 
 }
