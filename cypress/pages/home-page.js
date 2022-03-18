@@ -17,8 +17,9 @@ export default class HomePage extends Validaitons{
         this.validateTheUrlHasChanged(searchCriteria)
     }
 
-    clickDressesLink(){
+    clickDressesLinkAndValidate(){
         this.getDressesLink().click()
+        this.validateAnElementContainsText(this.pageElements.linkNavigation,'Dresses')
     }
     validateItemIsAddedToCart(num){
         this.validateAnElementHasText(this.pageElements.noOfCartItems, num)

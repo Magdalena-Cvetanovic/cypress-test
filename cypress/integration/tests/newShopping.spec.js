@@ -38,6 +38,6 @@ describe("Should test shopping flow", ()=>{
     })
     it('should check item is added and go to dresses', ()=>{
         homePage.validateItemIsAddedToCart(1)
-        homePage.clickDressesLink()
+        homePage.clickDressesLinkAndValidate()
     })
 })

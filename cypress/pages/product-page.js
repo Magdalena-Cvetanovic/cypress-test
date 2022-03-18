@@ -40,7 +40,7 @@ export default class ProductPage extends Validaitons{
         this.getFriendsEmailInut().type(email)
     }
     clickSend(){
-        this.getSendBtn().click().wait(3000)
+        this.getSendBtn().click().wait(4000)
     }
     clickOk(){
         this.getModalOkBtn().click()
@@ -61,7 +61,7 @@ export default class ProductPage extends Validaitons{
         this.getSizes().select(size)
     }
     clickAddToCart(){
-        this.getAddToCartBtn().click().wait(2000)
+        this.getAddToCartBtn().click().wait(4000)
     }
     chooseColorSizeAddToCartAndValidate(color,size){
         this.chooseColor(color)
