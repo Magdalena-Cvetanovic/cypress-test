@@ -18,4 +18,8 @@ export default class Validaitons{
   validateAnElementIsChecked(element){
     cy.get(element).should('be.checked')
 }
+  validateAnElementEquals(element, text){
+    cy.get(element).should('eq', text)
+  }
+
 }

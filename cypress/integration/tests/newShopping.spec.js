@@ -38,4 +38,8 @@ describe("Should test shopping flow", ()=>{
         addToCartModal.continueShopping(color,size)
         
     })
+    it('should check item is added and go to dresses', ()=>{
+        homePage.validateItemIsAddedToCart(2)
+        homePage.clickDressesLink()
+    })
 })

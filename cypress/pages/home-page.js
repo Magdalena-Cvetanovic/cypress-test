@@ -12,6 +12,9 @@ export default class HomePage{
     }
 
     clickDressesLink(){
-        cy.get(this.pageElements.clickDressesLink()).click()
+        cy.get(this.pageElements.getDressesLink()).click()
+    }
+    validateItemIsAddedToCart(num){
+        this.validations.validateAnElementEquals(this.pageElements.getNoOfCartItems, num)
     }
 }
