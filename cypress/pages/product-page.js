@@ -61,7 +61,12 @@ export default class ProductPage extends Validaitons{
         this.getSizes().select(size)
     }
     clickAddToCart(){
-        this.getAddToCartBtn().click()
+        this.getAddToCartBtn().click().wait(2000)
+    }
+    chooseColorSizeAddToCartAndValidate(color,size){
+        this.chooseColor(color)
+        this.chooseSize(size)
+        this.clickAddToCart()
     }
 
 }

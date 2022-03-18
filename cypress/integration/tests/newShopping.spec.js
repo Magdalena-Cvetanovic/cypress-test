@@ -32,10 +32,8 @@ describe("Should test shopping flow", ()=>{
     it('should choose color, size, and add to cart', ()=>{
         const color = 'Blue'
         const size = 'M'
-        productPage.chooseColor(color)
-        productPage.chooseSize(size)
-        productPage.clickAddToCart()
-        addToCartModal.continueShopping(color,size)
+        productPage.chooseColorSizeAddToCartAndValidate(color,size)
+        addToCartModal.continueShoppingAndValidate(color,size)
         
     })
     it('should check item is added and go to dresses', ()=>{

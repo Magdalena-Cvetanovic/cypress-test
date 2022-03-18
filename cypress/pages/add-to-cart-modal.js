@@ -3,18 +3,24 @@
 import AddToCartModalElements from "../page-elements/add-to-cart-modal-elements";
 import Validaitons from "../support/validations";
 
-export default class AddToCartModal{
+export default class AddToCartModal extends Validaitons{
     pageElements = new AddToCartModalElements()
-    validations = new Validaitons()
+
+    getContinueShoppingBtn(){
+        return cy.get(this.pageElements.continueShoppingBtn)
+    }
+    getProceedToCheckoutBtn(){
+        return cy.get(this.pageElements.proceedToCheckoutBtn)
+    }
 
     clickContinueShopping(){
-        cy.get(this.pageElements.getContinueShoppingBtn()).click()
+        this.getContinueShoppingBtn().click()
     }
     clickProceedToCheckOut(){
-        cy.get(this.pageElements.getProceedToCheckoutBtn().click())
+        this.getProceedToCheckoutBtn().click()
     }
-    continueShopping(color,size){
+    continueShoppingAndValidate(color,size){
+        this.validateAnElementContainsText(this.pageElements.addedProductDetails,color,size)
         this.clickContinueShopping()
-        this.validations.validateAnElementContainsText(this.pageElements.getAddedProductDetails(),color,size)
     }
 }
