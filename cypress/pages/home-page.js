@@ -17,11 +17,10 @@ export default class HomePage extends Validaitons{
         this.validateTheUrlHasChanged(searchCriteria)
     }
 
-    clickDressesLinkAndValidate(){
+    clickDressesLinkAndValidate(item){
         this.getDressesLink().click()
-        this.validateAnElementContainsText(this.pageElements.linkNavigation,'Dresses')
+        this.validateTheUserIsOnTheCorrectPage('Dresses')
+        this.validateTheCartHasItems(item)
     }
-    validateItemIsAddedToCart(num){
-        this.validateAnElementHasText(this.pageElements.noOfCartItems, num)
-    }
+
 }

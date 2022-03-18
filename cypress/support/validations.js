@@ -3,6 +3,7 @@
 export default class Validaitons{
 
   navitationText = '.breadcrumb'
+  noOfCartItems ='a>.ajax_cart_quantity'
 
   validateTheUrlHasChanged(param){
     cy.on("url:changed", (newUrl)=>{
@@ -26,6 +27,9 @@ export default class Validaitons{
   }
   validateTheUserIsOnTheCorrectPage(text){
     cy.get(this.navitationText).should('contain.text', text)
+  }
+  validateTheCartHasItems(text){
+    cy.get(this.noOfCartItems).should('has.text',text)
   }
 
 }

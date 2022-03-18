@@ -23,4 +23,9 @@ export default class AddToCartModal extends Validaitons{
         this.validateAnElementContainsText(this.pageElements.addedProductDetails,color,size)
         this.clickContinueShopping()
     }
+    proceedToCheckoutAndValidate(item){
+        this.clickProceedToCheckOut()
+        this.validateTheUrlHasChanged('order')
+        this.validateTheCartHasItems(item)
+    }
 }

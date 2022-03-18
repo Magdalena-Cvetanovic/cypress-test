@@ -22,30 +22,32 @@ describe("Should test shopping flow", ()=>{
         Cypress.Cookies.preserveOnce('PrestaShop-a30a9934ef476d11b6cc3c983616e364')
     })
 
-    // it('should conduct search', ()=>{
-    //    homePage.conductSearchAndValidate('shirt')
-    // })
-    // it('should open the first product',()=>{
-    //     searchResultPage.openFirstProductAndValidate()
-    // })
-    // it('should recommend to a friend', ()=>{
-    //     productPage.conductSendToAFriendAndValidate('someone','else@elsewhere.com','Send to a friend')
-    // })
-    // it('should choose color, size, and add to cart', ()=>{
-    //     const color = 'Blue'
-    //     const size = 'M'
-    //     productPage.chooseColorSizeAddToCartAndValidate(color,size)
-    //     addToCartModal.continueShoppingAndValidate(color,size)
+    it('should conduct search', ()=>{
+       homePage.conductSearchAndValidate('shirt')
+    })
+    it('should open the first product',()=>{
+        searchResultPage.openFirstProductAndValidate()
+    })
+    it('should recommend to a friend', ()=>{
+        productPage.conductSendToAFriendAndValidate('someone','else@elsewhere.com','Send to a friend')
+    })
+    it('should choose color, size, and add to cart', ()=>{
+        const color = 'Blue'
+        const size = 'M'
+        productPage.chooseColorSizeAddToCartAndValidate(color,size)
+        addToCartModal.continueShoppingAndValidate(color,size)
         
-    // })
+    })
     it('should check item is added and go to dresses', ()=>{
-        homePage.validateItemIsAddedToCart(0)
-        homePage.clickDressesLinkAndValidate()
+        homePage.clickDressesLinkAndValidate(1)
     })
     it('should choose 2 dresses to compare', ()=>{
         searchResultPage.chooseTwoDressesToCompareAndValidate()
     })
     it('should choose the 20% discount dress', ()=>{
         productComparisonpage.addToCartProductAndValidate()
+    })
+    it('should go to checkout', ()=>{
+        addToCartModal.proceedToCheckoutAndValidate(2)
     })
 })
