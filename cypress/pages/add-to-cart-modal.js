@@ -15,6 +15,6 @@ export default class AddToCartModal{
     }
     continueShopping(color,size){
         this.clickContinueShopping()
-        this.validations.validateAnElementContainsText(this.pageElements.getAddedProductDetails,color,size)
+        this.validations.validateAnElementContainsText(this.pageElements.getAddedProductDetails(),color,size)
     }
 }

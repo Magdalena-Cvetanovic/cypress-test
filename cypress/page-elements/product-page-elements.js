@@ -8,8 +8,8 @@ export default class ProductPageElements{
     modalOkBtn = '[value=OK]'
     sizes = '#group_1'
     addToCartBtn = '#add_to_cart>button'
-    modalText = '.fancybox-inner > h2'
-    modal = '.fancybox-skin'
+    modalText = '#send_friend_form>.page-subheading'
+    modal = 'fancybox-skin'
 
     getSendToAFriendBtn(){
         return this.sendToAFriendBtn

@@ -1,20 +1,26 @@
 ///<reference types= "cypress"/>
 import HomePageElements from '../page-elements/home-page-elements'
-import Validaitons from '../support/validations'
+import Validaitons from '../support/validations';
 
-export default class HomePage{
+export default class HomePage extends Validaitons{
     pageElements = new HomePageElements()
-    validations = new Validaitons()
+
+    getSearchBar() {
+        return cy.get(this.pageElements.searchBar);
+    }
+    getDressesLink(){
+        return cy.get(this.pageElements.dressesLink)
+    }
     
-    conductSearch(searchCriteria){
-        cy.get(this.pageElements.getSearchBar()).type(`${searchCriteria}{enter}`)
-        this.validations.validateTheUrlHasChanged(searchCriteria)
+    conductSearchAndValidate(searchCriteria){
+        this.getSearchBar().type(`${searchCriteria}{enter}`)
+        this.validateTheUrlHasChanged(searchCriteria)
     }
 
     clickDressesLink(){
-        cy.get(this.pageElements.getDressesLink()).click()
+        this.getDressesLink().click()
     }
     validateItemIsAddedToCart(num){
-        this.validations.validateAnElementEquals(this.pageElements.getNoOfCartItems, num)
+        this.validateAnElementHasText(this.pageElements.noOfCartItems, num)
     }
 }

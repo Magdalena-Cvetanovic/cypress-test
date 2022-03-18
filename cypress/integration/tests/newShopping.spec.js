@@ -21,10 +21,10 @@ describe("Should test shopping flow", ()=>{
     })
 
     it('should conduct search', ()=>{
-       homePage.conductSearch('shirt')
+       homePage.conductSearchAndValidate('shirt')
     })
     it('should open the first product',()=>{
-        searchResultPage.openFirstProduct()
+        searchResultPage.openFirstProductAndValidate()
     })
     it('should recommend to a friend', ()=>{
         productPage.conductSendToAFriend('someone','else@elsewhere.com','Send to a friend')
@@ -39,7 +39,7 @@ describe("Should test shopping flow", ()=>{
         
     })
     it('should check item is added and go to dresses', ()=>{
-        homePage.validateItemIsAddedToCart(2)
+        homePage.validateItemIsAddedToCart(1)
         homePage.clickDressesLink()
     })
 })

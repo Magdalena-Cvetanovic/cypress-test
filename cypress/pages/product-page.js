@@ -26,7 +26,7 @@ export default class ProductPage{
         this.clickSendToAFriend()
         this.enterFriendsName(name)
         this.enterFriendsEmail(email)
-        this.validations.validateAnElementContainsText(this.elementsPage.getModalText,text)
+        this.validations.validateAnElementContainsText(this.elementsPage.getModalText(),text)
         this.clickSend()
         this.clickOk()
         this.validations.validateAnElementIsNotVisible(this.elementsPage.getModal())
