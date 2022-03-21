@@ -32,4 +32,5 @@ export default class Validaitons{
     cy.get(this.noOfCartItems).should('has.text',text)
   }
 
+  
 }
