@@ -46,9 +46,10 @@ export default class CheckoutPage extends Validaitons{
         this.getCreateNewAccountBtn().click().wait(2000)
         this.validateAnElementContainsText(this.pageElements.existingEmailAlert,text)
     }
-    createNewAccountAndValidate(email){
+    createNewAccountAndValidate(email,title){
         this.getNewUAccountEmailInput().clear().type(email)
         this.getCreateNewAccountBtn().click()
+        this.validateTheUrlHasChanged(title)
     }
     loginAndValidate(email,password,page){
         this.getExistingAccountEmailInput().type(email)

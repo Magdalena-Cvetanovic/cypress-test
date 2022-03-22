@@ -6,6 +6,7 @@ import ProductComparisonPage from "../../pages/product-comparison"
 import ProductPage from "../../pages/product-page"
 import SearchResultPage from "../../pages/search-result-page"
 import CheckoutPage from "../../pages/checkout-page"
+import AccountCreationPage from "../../pages/account-creation-page"
 
 
 describe("Should test shopping flow", () => {
@@ -15,7 +16,7 @@ describe("Should test shopping flow", () => {
     const addToCartModal = new AddToCartModal()
     const productComparisonPage = new ProductComparisonPage()
     const shoppingCartPage = new CheckoutPage()
-
+    const accountCreationPage = new AccountCreationPage()
 
     before(() => {
         cy.visit('http://automationpractice.com/index.php')
@@ -58,6 +59,8 @@ describe("Should test shopping flow", () => {
     })
     it('should complete checkout process', ()=>{
         shoppingCartPage.createNewAccountWIthExistingEmaillAndValidate('someoneNew@mailinator.com','An account using this email address has already been registered.')
+        shoppingCartPage.createNewAccountAndValidate('testAccount@mailinator.com','account-creation')
+        // accountCreationPage.fillOutCreationForm('female','Test','Account','Password',12,4,'1990','Address','Any','Texas','18000','93949343244','TestUser0001')
         shoppingCartPage.loginAndValidate('someoneNew@mailinator.com','password','Addresses')
         shoppingCartPage.clickProceedToCheckoutStepsAndValidate('Shipping')
         shoppingCartPage.checkTermsOfServiceAndValidate()
