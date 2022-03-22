@@ -52,16 +52,19 @@ export default class AccountCreationPage extends Validaitons{
         return cy.get(this.pageElements.registerBtn)
     }
     chooseTitle(title){
-        if(title.toString().includes('male')){
+        if(title.gender.toString().includes('Male')){
             this.getMrTitle().click()
-        }else if(title.toString().includes('female')){
+            cy.log(title)
+        }else if(title.toString().includes('Female')){
             this.getMrsTitle().click()
+            cy.log(title)
         }else{
             cy.log('Selected title does not exist. Please enter male or female')
+            cy.log(title)
         }
     }
     enterName(name){
-        this.getNameInput().clear().type(name)
+        this.getNameInput().clear().type(name.accountCreation.name)
     }
     enterSurname(surname){
         this.getSurnameInput().clear().type(surname)
@@ -97,7 +100,7 @@ export default class AccountCreationPage extends Validaitons{
     }
     fillOutCreationForm(title,name,surname,password,day,month,year,address,city,state,postCode,phoneNumber,alias){
         this.chooseTitle(title)
-        this.enterName(name)
+        this.enterName(name.accountCreation.name)
         this.enterSurname(surname)
         this.enterPassword(password)
         this.enterDateOfBirth(day,month,year)

@@ -20,7 +20,7 @@ export default class AddToCartModal extends Validaitons{
         this.getProceedToCheckoutBtn().click()
     }
     continueShoppingAndValidate(color,size){
-        this.validateAnElementContainsText(this.pageElements.addedProductDetails,color,size)
+        this.validateAnElementContainsText(this.pageElements.addedProductDetails,`${color+', '+size}`)
         this.clickContinueShopping()
     }
     proceedToCheckoutAndValidate(page,item){
