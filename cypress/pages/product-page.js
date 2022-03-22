@@ -1,6 +1,7 @@
 ///<reference types= "cypress"/>
 
 import ProductPageElements from "../page-elements/product-page-elements";
+import { testData } from "../support/test-data";
 import Validaitons from "../support/validations";
 
 export default class ProductPage extends Validaitons{
@@ -21,8 +22,8 @@ export default class ProductPage extends Validaitons{
     getModalOkBtn(){
         return cy.get(this.elementsPage.modalOkBtn)
     }
-    getColors(color){
-        return cy.get(this.elementsPage.getColors(color))
+    getColors(){
+        return cy.get(this.elementsPage.getColors(testData.product.color))
     }
     getSizes(){
         return cy.get(this.elementsPage.sizes)
@@ -33,11 +34,11 @@ export default class ProductPage extends Validaitons{
     clickSendToAFriend(){
         this.getSendToAFriendBtn().click()
     }
-    enterFriendsName(name){
-        this.getFriendsNameInput().type((name))
+    enterFriendsName(){
+        this.getFriendsNameInput().type((testData.sendToAFriend.name))
     }
-    enterFriendsEmail(email){
-        this.getFriendsEmailInut().type(email)
+    enterFriendsEmail(){
+        this.getFriendsEmailInut().type(testData.sendToAFriend.email)
     }
     clickSend(){
         this.getSendBtn().click().wait(4000)
@@ -45,27 +46,27 @@ export default class ProductPage extends Validaitons{
     clickOk(){
         this.getModalOkBtn().click()
     }
-    conductSendToAFriendAndValidate(name,email,text){
+    conductSendToAFriendAndValidate(){
         this.clickSendToAFriend()
-        this.enterFriendsName(name)
-        this.enterFriendsEmail(email)
-        this.validateAnElementContainsText(this.elementsPage.modalText,text)
+        this.enterFriendsName()
+        this.enterFriendsEmail()
+        this.validateAnElementContainsText(this.elementsPage.modalText,testData.sendToAFriend.modalText)
         this.clickSend()
         this.clickOk()
         this.validateAnElementIsNotVisible(this.elementsPage.modal)
     }
-    chooseColor(color){
-        this.getColors(color).click()
+    chooseColor(){
+        this.getColors(testData.product.color).click()
     }
-    chooseSize(size){
-        this.getSizes().select(size)
+    chooseSize(){
+        this.getSizes().select(testData.product.size)
     }
     clickAddToCart(){
         this.getAddToCartBtn().click().wait(4000)
     }
-    chooseColorSizeAddToCartAndValidate(color,size){
-        this.chooseColor(color)
-        this.chooseSize(size)
+    chooseColorSizeAddToCartAndValidate(){
+        this.chooseColor()
+        this.chooseSize()
         this.clickAddToCart()
     }
 

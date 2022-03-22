@@ -1,6 +1,7 @@
 ///<reference types="cypress"/>
 
 import AccountCreationElements from "../page-elements/account-creation-elements";
+import { testData } from "../support/test-data";
 import Validaitons from "../support/validations";
 
 export default class AccountCreationPage extends Validaitons{
@@ -51,65 +52,62 @@ export default class AccountCreationPage extends Validaitons{
     getRegisterBtn(){
         return cy.get(this.pageElements.registerBtn)
     }
-    chooseTitle(title){
-        if(title.gender.toString().includes('Male')){
+    chooseTitle(){
+        if(testData.accountCreation.gender.includes('Male')){
             this.getMrTitle().click()
-            cy.log(title)
-        }else if(title.toString().includes('Female')){
+        }else if(testData.accountCreation.gender.includes('Female')){
             this.getMrsTitle().click()
-            cy.log(title)
         }else{
             cy.log('Selected title does not exist. Please enter male or female')
-            cy.log(title)
         }
     }
-    enterName(name){
-        this.getNameInput().clear().type(name.accountCreation.name)
+    enterName(){
+        this.getNameInput().clear().type(testData.accountCreation.name)
     }
-    enterSurname(surname){
-        this.getSurnameInput().clear().type(surname)
+    enterSurname(){
+        this.getSurnameInput().clear().type(testData.accountCreation.surname)
     }
-    enterPassword(password){
-        this.getPasswordInput().clear().type(password)
+    enterPassword(){
+        this.getPasswordInput().clear().type(testData.accountCreation.password)
     }
-    enterDateOfBirth(day,month,year){
-        this.getDaysSelect().select(day)
-        this.getMonthsSelect().select(month)
-        this.getYearsSelect().select(year)
+    enterDateOfBirth(){
+        this.getDaysSelect().select(testData.accountCreation.day)
+        this.getMonthsSelect().select(testData.accountCreation.month)
+        this.getYearsSelect().select(testData.accountCreation.year.toString())
     }
-    enterAddress(address){
-        this.getAddressInput().clear().type(address)
+    enterAddress(){
+        this.getAddressInput().clear().type(testData.accountCreation.address)
     }
-    enterCity(city){
-        this.getCityInput().clear().type(city)
+    enterCity(){
+        this.getCityInput().clear().type(testData.accountCreation.city)
     }
-    chooseState(state){
-        this.getStateSelect().select(state)
+    chooseState(){
+        this.getStateSelect().select(testData.accountCreation.state)
     }
-    enterPostCode(postCode){
-        this.getPostCodeInput().clear().type(postCode)
+    enterPostCode(){
+        this.getPostCodeInput().clear().type(testData.accountCreation.postCode)
     }
-    enterMobilePhone(mobilePhone){
-        this.getMobilePhoneInput().clear().type(mobilePhone)
+    enterMobilePhone(){
+        this.getMobilePhoneInput().clear().type(testData.accountCreation.phoneNumber)
     }
-    enterAlias(alias){
-        this.getAliasInput().clear().type(alias)
+    enterAlias(){
+        this.getAliasInput().clear().type(testData.accountCreation.alias)
     }
     clickRegister(){
         this.getRegisterBtn().click()
     }
-    fillOutCreationForm(title,name,surname,password,day,month,year,address,city,state,postCode,phoneNumber,alias){
-        this.chooseTitle(title)
-        this.enterName(name.accountCreation.name)
-        this.enterSurname(surname)
-        this.enterPassword(password)
-        this.enterDateOfBirth(day,month,year)
-        this.enterAddress(address)
-        this.enterCity(city)
-        this.chooseState(state)
-        this.enterPostCode(postCode)
-        this.enterMobilePhone(phoneNumber)
-        this.enterAlias(alias)
+    fillOutCreationForm(){
+        this.chooseTitle()
+        this.enterName()
+        this.enterSurname()
+        this.enterPassword()
+        this.enterDateOfBirth()
+        this.enterAddress()
+        this.enterCity()
+        this.chooseState()
+        this.enterPostCode()
+        this.enterMobilePhone()
+        this.enterAlias()
         this.clickRegister()
     }
 

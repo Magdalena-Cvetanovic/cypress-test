@@ -1,5 +1,6 @@
 ///<reference types = "cypress"/>
 import ProductComparisonElements from "../page-elements/product-comparison-elements";
+import { testData } from "../support/test-data";
 import Validaitons from "../support/validations";
 
 export default class ProductComparisonPage extends Validaitons{
@@ -26,10 +27,10 @@ export default class ProductComparisonPage extends Validaitons{
         })
     }
     addToCartProductAndValidate(){
-        this.validateTheUrlHasChanged('products-comparison')
+        this.validateTheUrlHasChanged(testData.urlContents.productComparison)
         this.getProductsToCompare()
         this.addToCart20DiscountDress()
-        this.validateTheUrlHasChanged('order')
+        this.validateTheUrlHasChanged(testData.urlContents.shoppingCart)
     }
 
     

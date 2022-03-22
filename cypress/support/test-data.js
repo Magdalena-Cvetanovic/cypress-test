@@ -7,7 +7,7 @@ export const testData = {
         'criteria': 'shirt'
     },
     sendToAFriend : {
-        'name': faker.name.firstName(),
+        'name': faker.name.findName(),
         'email': faker.internet.email(),
         'modalText': 'Send to a friend'
     },
@@ -16,6 +16,7 @@ export const testData = {
         'size': 'M'
     },
     pageNavigation : {
+        'dressPage' : 'Dresses',
         'shoppingCart': 'Your shopping cart',
         'authentication' : 'Authentication',
         'addresses' : 'Addresses',
@@ -32,7 +33,10 @@ export const testData = {
         'existingAccount' : 'An account using this email address has already been registered.'
     },
     urlContents : {
-        'accountCreation' : 'account-creation'
+        'accountCreation' : 'account-creation',
+        'product' : 'id_product',
+        'productComparison' : 'products-comparison',
+        'shoppingCart' : 'order'
     },
     accountCreation : {
         'gender': faker.name.gender(true),
@@ -46,12 +50,12 @@ export const testData = {
         'address': faker.address.streetAddress(),
         'city': faker.address.cityName(),
         'state': faker.datatype.number({max:50}),
-        'postCode': faker.address.zipCode(),
-        'phoneNumber': faker.phone.phoneNumber(),
+        'postCode': faker.address.zipCode('#####'),
+        'phoneNumber': faker.phone.phoneNumber('060 ########'),
         'alias' : faker.name.findName()
     },
     existingAccount : {
         'username': 'someoneNew@mailinator.com',
-        'password': 'Password'
+        'password': 'password'
     }
 }

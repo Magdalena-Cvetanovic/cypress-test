@@ -1,6 +1,7 @@
 ///<reference types= "cypress"/>
 
 import AddToCartModalElements from "../page-elements/add-to-cart-modal-elements";
+import { testData } from "../support/test-data";
 import Validaitons from "../support/validations";
 
 export default class AddToCartModal extends Validaitons{
@@ -19,13 +20,13 @@ export default class AddToCartModal extends Validaitons{
     clickProceedToCheckOut(){
         this.getProceedToCheckoutBtn().click()
     }
-    continueShoppingAndValidate(color,size){
-        this.validateAnElementContainsText(this.pageElements.addedProductDetails,`${color+', '+size}`)
+    continueShoppingAndValidate(){
+        this.validateAnElementContainsText(this.pageElements.addedProductDetails,`${testData.product.color+', '+testData.product.size}`)
         this.clickContinueShopping()
     }
-    proceedToCheckoutAndValidate(page,item){
+    proceedToCheckoutAndValidate(item){
         this.clickProceedToCheckOut()
-        this.validateTheUserIsOnTheCorrectPage(page)
+        this.validateTheUserIsOnTheCorrectPage(testData.pageNavigation.shoppingCart)
         this.validateTheCartHasItems(item)
     }
 }

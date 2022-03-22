@@ -1,5 +1,6 @@
 ///<reference types= "cypress"/>
 import HomePageElements from '../page-elements/home-page-elements'
+import { testData } from '../support/test-data';
 import Validaitons from '../support/validations';
 
 export default class HomePage extends Validaitons{
@@ -12,14 +13,14 @@ export default class HomePage extends Validaitons{
         return cy.get(this.pageElements.dressesLink)
     }
     
-    conductSearchAndValidate(searchCriteria){
-        this.getSearchBar().type(`${searchCriteria}{enter}`)
-        this.validateTheUrlHasChanged(searchCriteria)
+    conductSearchAndValidate(){
+        this.getSearchBar().type(`${testData.search.criteria}{enter}`)
+        this.validateTheUrlHasChanged(testData.search.criteria)
     }
 
     clickDressesLinkAndValidate(item){
         this.getDressesLink().click()
-        this.validateTheUserIsOnTheCorrectPage('Dresses')
+        this.validateTheUserIsOnTheCorrectPage(testData.pageNavigation.dressPage)
         this.validateTheCartHasItems(item)
     }
 

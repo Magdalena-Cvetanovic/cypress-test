@@ -1,6 +1,7 @@
 ///<reference types = "cypress"/>
 
 import CheckoutPageElements from "../page-elements/checkout-page-elements";
+import { testData } from "../support/test-data";
 import Validaitons from "../support/validations";
 
 export default class CheckoutPage extends Validaitons{
@@ -33,6 +34,12 @@ export default class CheckoutPage extends Validaitons{
     getPaymentMethod(method){
         return cy.get(this.pageElements.getPaymentMethods(method))
     }
+    enterNewAccountEmail(){
+        this.getNewUAccountEmailInput().clear().type(testData.existingAccount.username)
+    }
+    clickCreateNewAccount(){
+        this.getCreateNewAccountBtn().click()
+    }
     clickProceedToCheckoutSummaryAndValidate(page){
         this.getProceedToCheckoutSummaryBtn().click()
         this.validateTheUserIsOnTheCorrectPage(page)
@@ -41,19 +48,19 @@ export default class CheckoutPage extends Validaitons{
         this.getProceedToCheckoutStepsBtn().click()
         this.validateTheUserIsOnTheCorrectPage(page)
     }
-    createNewAccountWIthExistingEmaillAndValidate(email,text){
-        this.getNewUAccountEmailInput().clear().type(email)
+    createNewAccountWIthExistingEmaillAndValidate(){
+        this.enterNewAccountEmail()
         this.getCreateNewAccountBtn().click().wait(2000)
-        this.validateAnElementContainsText(this.pageElements.existingEmailAlert,text)
+        this.validateAnElementContainsText(this.pageElements.existingEmailAlert, testData.errorMessages.existingAccount)
     }
-    createNewAccountAndValidate(email,title){
-        this.getNewUAccountEmailInput().clear().type(email)
+    createNewAccountAndValidate(){
+        this.getNewUAccountEmailInput().clear().type(testData.accountCreation.email)
         this.getCreateNewAccountBtn().click()
-        this.validateTheUrlHasChanged(title)
+        this.validateTheUrlHasChanged(testData.urlContents.accountCreation)
     }
-    loginAndValidate(email,password,page){
-        this.getExistingAccountEmailInput().type(email)
-        this.getExistingAccountPasswordInput().type(password)
+    loginAndValidate(page){
+        this.getExistingAccountEmailInput().type(testData.existingAccount.username)
+        this.getExistingAccountPasswordInput().type(testData.existingAccount.password)
         this.getSignInBtn().click()
         this.validateTheUserIsOnTheCorrectPage(page)
     }
@@ -61,8 +68,8 @@ export default class CheckoutPage extends Validaitons{
         this.getCheckbox().click()
         this.validateAnElementIsChecked(this.pageElements.checkbox)
     }
-    choosePaymentMethod(method,page){
-        this.getPaymentMethod(method).click()
+    choosePaymentMethod(page){
+        this.getPaymentMethod(testData.paymentMethod.check).click()
         this.validateTheUserIsOnTheCorrectPage(page)
     }
     

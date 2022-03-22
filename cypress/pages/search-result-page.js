@@ -1,6 +1,7 @@
 ///<reference types= "cypress"/>
 
 import SearchResultPageElements from "../page-elements/search-result-page-elements";
+import { testData } from "../support/test-data";
 import Validaitons from "../support/validations";
 
 export default class SearchResultPage extends Validaitons {
@@ -23,7 +24,7 @@ export default class SearchResultPage extends Validaitons {
     }
     openFirstProductAndValidate(){
         this.getFirstProduct().click()
-        this.validateTheUrlHasChanged('id_product')
+        this.validateTheUrlHasChanged(testData.urlContents.product)
     }
     collectElementsWithDiscount(){
         this.getListOfProducts().each(($el) => {

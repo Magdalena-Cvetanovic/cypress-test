@@ -27,17 +27,17 @@ describe("Should test shopping flow", () => {
     })
 
     it('should conduct search', () => {
-        homePage.conductSearchAndValidate(testData.search.criteria)
+        homePage.conductSearchAndValidate()
     })
     it('should open the first product', () => {
         searchResultPage.openFirstProductAndValidate()
     })
     it('should recommend to a friend', () => {
-        productPage.conductSendToAFriendAndValidate(testData.sendToAFriend.name,testData.sendToAFriend.email,testData.sendToAFriend.modalText)
+        productPage.conductSendToAFriendAndValidate()
     })
     it('should choose color, size, and add to cart', () => {
-        productPage.chooseColorSizeAddToCartAndValidate(testData.product.color, testData.product.size)
-        addToCartModal.continueShoppingAndValidate(testData.product.color, testData.product.size)
+        productPage.chooseColorSizeAddToCartAndValidate()
+        addToCartModal.continueShoppingAndValidate()
 
     })
     it('should check item is added and go to dresses', () => {
@@ -50,20 +50,20 @@ describe("Should test shopping flow", () => {
         productComparisonPage.addToCartProductAndValidate()
     })
     it('should go to checkout', () => {
-        addToCartModal.proceedToCheckoutAndValidate(testData.pageNavigation.shoppingCart,2)
+        addToCartModal.proceedToCheckoutAndValidate(2)
     })
     it('should proceed to checkout', ()=>{
         shoppingCartPage.clickProceedToCheckoutSummaryAndValidate(testData.pageNavigation.authentication)
     })
     it('should complete checkout process', ()=>{
-        shoppingCartPage.createNewAccountWIthExistingEmaillAndValidate('someoneNew@mailinator.com',testData.errorMessages.existingAccount)
-        shoppingCartPage.createNewAccountAndValidate(testData.accountCreation.email,testData.urlContents.accountCreation)
-        accountCreationPage.fillOutCreationForm(testData.accountCreation)
-        shoppingCartPage.loginAndValidate(testData.existingAccount.username,testData.existingAccount.password,testData.pageNavigation.addresses)
+        shoppingCartPage.createNewAccountWIthExistingEmaillAndValidate()
+        // shoppingCartPage.createNewAccountAndValidate()
+        // accountCreationPage.fillOutCreationForm()
+        shoppingCartPage.loginAndValidate(testData.pageNavigation.addresses)
         shoppingCartPage.clickProceedToCheckoutStepsAndValidate(testData.pageNavigation.shipping)
         shoppingCartPage.checkTermsOfServiceAndValidate()
         shoppingCartPage.clickProceedToCheckoutStepsAndValidate(testData.pageNavigation.payment)
-        shoppingCartPage.choosePaymentMethod(testData.paymentMethod.check, testData.pageNavigation.check)
+        shoppingCartPage.choosePaymentMethod(testData.pageNavigation.checkMethod)
         shoppingCartPage.clickProceedToCheckoutStepsAndValidate(testData.pageNavigation.confirmation)
     
 
