@@ -27,10 +27,9 @@ export default class ProductComparisonPage extends Validaitons{
         })
     }
     addToCartProductAndValidate(){
-        this.validateTheUrlHasChanged(testData.urlContents.productComparison)
+        this.validateTheUserIsOnTheCorrectPage(testData.pageNavigation.comparison)
         this.getProductsToCompare()
         this.addToCart20DiscountDress()
-        this.validateTheUrlHasChanged(testData.urlContents.shoppingCart)
     }
 
     

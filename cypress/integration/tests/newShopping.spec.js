@@ -38,7 +38,6 @@ describe("Should test shopping flow", () => {
     it('should choose color, size, and add to cart', () => {
         productPage.chooseColorSizeAddToCartAndValidate()
         addToCartModal.continueShoppingAndValidate()
-
     })
     it('should check item is added and go to dresses', () => {
         homePage.clickDressesLinkAndValidate(1)
@@ -46,26 +45,22 @@ describe("Should test shopping flow", () => {
     it('should choose 2 dresses to compare', () => {
         searchResultPage.chooseTwoDressesToCompareAndValidate()
     })
-    it('should choose the 20% discount dress', () => {
+    it('should choose the 20% discount dress and go to checkout', () => {
         productComparisonPage.addToCartProductAndValidate()
-    })
-    it('should go to checkout', () => {
         addToCartModal.proceedToCheckoutAndValidate(2)
-    })
-    it('should proceed to checkout', ()=>{
         shoppingCartPage.clickProceedToCheckoutSummaryAndValidate(testData.pageNavigation.authentication)
-    })
-    it('should complete checkout process', ()=>{
         shoppingCartPage.createNewAccountWIthExistingEmaillAndValidate()
-        // shoppingCartPage.createNewAccountAndValidate()
-        // accountCreationPage.fillOutCreationForm()
+    })
+    it.skip('should create a new account',()=>{
+        shoppingCartPage.createNewAccountAndValidate()
+        accountCreationPage.fillOutCreationForm()
+    })
+    it('should complete checkout process', () => {
         shoppingCartPage.loginAndValidate(testData.pageNavigation.addresses)
         shoppingCartPage.clickProceedToCheckoutStepsAndValidate(testData.pageNavigation.shipping)
         shoppingCartPage.checkTermsOfServiceAndValidate()
         shoppingCartPage.clickProceedToCheckoutStepsAndValidate(testData.pageNavigation.payment)
         shoppingCartPage.choosePaymentMethod(testData.pageNavigation.checkMethod)
         shoppingCartPage.clickProceedToCheckoutStepsAndValidate(testData.pageNavigation.confirmation)
-    
-
     })
 })

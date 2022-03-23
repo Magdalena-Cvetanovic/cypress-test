@@ -23,7 +23,8 @@ export const testData = {
         'shipping' : 'Shipping',
         'payment' : 'payment',
         'checkMethod' : 'Check',
-        'confirmation': 'Order confirmation'
+        'confirmation': 'Order confirmation',
+        'comparison': 'Product Comparison'
     },
     paymentMethod : {
         'check' : 'check.',

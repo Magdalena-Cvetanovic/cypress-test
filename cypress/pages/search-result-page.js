@@ -35,7 +35,7 @@ export default class SearchResultPage extends Validaitons {
     }
     hoverToProductAndClickAddToCompare(){
         this.getProductsWithDiscount().each(($el) =>{
-            cy.get($el).trigger('mouseover')
+            cy.get($el).invoke('show')
             cy.get($el).find(this.elementPage.addToCompareBtn).click().wait(4000)
         })
     }

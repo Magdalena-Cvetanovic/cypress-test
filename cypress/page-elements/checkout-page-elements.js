@@ -11,6 +11,6 @@ export default class CheckoutPageElements{
     checkbox = '#cgv'
 
     getPaymentMethods(method){
-        return `[title="Pay by ${method}"`
+        return `[title="Pay by ${method}"]`
     }
 }
