@@ -1,0 +1,17 @@
+export default class AccountCreationElements {
+    mrTitle = '#id_gender1'
+    mrsTitle = '#id_gender2'
+    nameInput = '#customer_firstname'
+    surnameInput = '#customer_lastname'
+    passwordInput = '#passwd'
+    daysSelect = '#days'
+    monthsSelect = '#months'
+    yearsSelect = '#years'
+    addressInput = '#address1'
+    cityInput = '#city'
+    stateSelect = '#id_state'
+    postCodeInput = '#postcode'
+    mobilePhoneInput = '#phone_mobile'
+    aliasInput = '#alias'
+    registerBtn = '#submitAccount'
+}

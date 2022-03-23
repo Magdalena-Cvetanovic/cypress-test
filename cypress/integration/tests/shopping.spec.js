@@ -1,11 +1,11 @@
 ///<reference types= "cypress"/>
 
-import { fillOutCreationForm } from "../../page-objects/account-creation-actions"
-import { createNewAccount, proceedToCheckout, signIn } from "../../page-objects/checkout-page-actions"
-import { clickDresses, conductSearch } from "../../page-objects/home-page-actions"
-import { addToCartBiggerDiscountDress, chooseColor, chooseSize, clickAddToCart, clickContinueShopping, clickOkToCloseModal, clickToProceedToCheckout, getProductsToCompare, sendToAFriend } from "../../page-objects/product-page-actions"
-import { checkTermsOfService, choosePayment, clickCompareBtn, collectElementsWithDiscount, hoverToProductAndClickAddToCompare, openFirstProduct } from "../../page-objects/search-result-page-actions"
-import { validateAnElementContainsText, validateAnElementIsChecked, validateAnElementIsNotVisible, validateAnElementIsVisible, validateTheUrlHasChanged } from "../../page-objects/validations"
+import { fillOutCreationForm } from "../../page-functions/account-creation-actions"
+import { createNewAccount, proceedToCheckout, signIn } from "../../page-functions/checkout-page-actions"
+import { clickDresses, conductSearch } from "../../page-functions/home-page-actions"
+import { addToCartBiggerDiscountDress, chooseColor, chooseSize, clickAddToCart, clickContinueShopping, clickOkToCloseModal, clickToProceedToCheckout, getProductsToCompare, sendToAFriend } from "../../page-functions/product-page-actions"
+import { checkTermsOfService, choosePayment, clickCompareBtn, collectElementsWithDiscount, hoverToProductAndClickAddToCompare, openFirstProduct } from "../../page-functions/search-result-page-actions"
+import { validateAnElementContainsText, validateAnElementIsChecked, validateAnElementIsNotVisible, validateAnElementIsVisible, validateTheUrlHasChanged } from "../../page-functions/validations"
 
 describe("Should test shopping flow", ()=>{
 
