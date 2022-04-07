@@ -10,6 +10,8 @@ import AccountCreationPage from "../../pages/account-creation-page"
 import { testData } from "../../support/test-data"
 
 describe("Should test shopping flow", () => {
+    Cypress.config('defaultCommandTimeout', 20000)
+
     const homePage = new HomePage()
     const searchResultPage = new SearchResultPage()
     const productPage = new ProductPage()

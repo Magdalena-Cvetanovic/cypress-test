@@ -20,10 +20,10 @@ export default class SearchResultPage extends Validaitons {
         return cy.get(this.elementPage.addToCompareBtn)
     }
     getCompareBtn(){
-        return cy.get(this.elementPage.compareBtn)
+        return cy.get(this.elementPage.compareBtn);
     }
     openFirstProductAndValidate(){
-        this.getFirstProduct().click()
+        this.getFirstProduct().eq(0).click()
         this.validateTheUrlHasChanged(testData.urlContents.product)
     }
     collectElementsWithDiscount(){
@@ -35,8 +35,12 @@ export default class SearchResultPage extends Validaitons {
     }
     hoverToProductAndClickAddToCompare(){
         this.getProductsWithDiscount().each(($el) =>{
-            cy.get($el).invoke('show')
-            cy.get($el).find(this.elementPage.addToCompareBtn).click().wait(4000)
+            cy.get(this.elementPage.compareBtn).find('strong').invoke('text').then((numberOfItems) => {
+                cy.get($el).invoke('show');
+                cy.get($el).find(this.elementPage.addToCompareBtn).click({force:true});
+                this.getCompareBtn().should('be.enabled');
+                cy.get(this.elementPage.compareBtn).find('strong').invoke('text').should('equal', `${(Number(numberOfItems) +1)}`);
+            })
         })
     }
     clickCompareBtn(){
