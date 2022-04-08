@@ -22,7 +22,7 @@ export default class ProductComparisonPage extends Validaitons{
     addToCart20DiscountDress(){
         this.getProducts().each(($el)=>{
             if($el.text().includes('20')){
-                cy.get($el).find(this.pageElements.addToCart).click().wait(2000)
+                cy.get($el).find(this.pageElements.addToCart).click()
             }
         })
     }

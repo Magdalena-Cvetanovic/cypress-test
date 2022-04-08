@@ -50,7 +50,7 @@ export default class CheckoutPage extends Validaitons{
     }
     createNewAccountWIthExistingEmaillAndValidate(){
         this.enterNewAccountEmail()
-        this.getCreateNewAccountBtn().click().wait(2000)
+        this.getCreateNewAccountBtn().click()
         this.validateAnElementContainsText(this.pageElements.existingEmailAlert, testData.errorMessages.existingAccount)
     }
     createNewAccountAndValidate(){
