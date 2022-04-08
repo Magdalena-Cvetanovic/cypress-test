@@ -29,18 +29,19 @@ describe("Should test shopping flow", () => {
     })
 
     it('should conduct search', () => {
-        homePage.conductSearchAndValidate()
+        homePage.conductSearch()
+        searchResultPage.validateCorrectTermIsSearched()
     })
-    it('should open the first product', () => {
-        searchResultPage.openFirstProductAndValidate()
-    })
-    it('should recommend to a friend', () => {
-        productPage.conductSendToAFriendAndValidate()
-    })
-    it('should choose color, size, and add to cart', () => {
-        productPage.chooseColorSizeAddToCartAndValidate()
-        addToCartModal.continueShoppingAndValidate()
-    })
+    // it('should open the first product', () => {
+    //     searchResultPage.openFirstProductAndValidate()
+    // })
+    // it('should recommend to a friend', () => {
+    //     productPage.conductSendToAFriendAndValidate()
+    // })
+    // it('should choose color, size, and add to cart', () => {
+    //     productPage.chooseColorSizeAddToCartAndValidate()
+    //     addToCartModal.continueShoppingAndValidate()
+    // })
     // it('should check item is added and go to dresses', () => {
     //     homePage.clickDressesLinkAndValidate(1)
     // })

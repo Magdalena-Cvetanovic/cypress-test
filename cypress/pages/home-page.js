@@ -13,9 +13,8 @@ export default class HomePage extends Validaitons{
         return cy.get(this.pageElements.dressesLink)
     }
     
-    conductSearchAndValidate(){
+    conductSearch(){
         this.getSearchBar().type(`${testData.search.criteria}{enter}`)
-        this.validateTheUrlHasChanged(testData.search.criteria)
     }
 
     clickDressesLinkAndValidate(item){

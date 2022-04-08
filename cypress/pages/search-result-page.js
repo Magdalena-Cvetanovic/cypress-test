@@ -22,6 +22,12 @@ export default class SearchResultPage extends Validaitons {
     getCompareBtn(){
         return cy.get(this.elementPage.compareBtn);
     }
+    getSearchedTerm(){
+        return this.elementPage.searchedTerm
+    }
+    validateCorrectTermIsSearched(){
+        this.validateAnElementContainsText(this.getSearchedTerm(), testData.search.criteria)
+    }
     openFirstProductAndValidate(){
         this.getFirstProduct().eq(0).click()
         this.validateTheUrlHasChanged(testData.urlContents.product)
