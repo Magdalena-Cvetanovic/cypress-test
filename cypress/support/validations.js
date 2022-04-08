@@ -22,6 +22,9 @@ export default class Validaitons{
   validateAnElementIsChecked(element){
     cy.get(element).should('be.checked')
 }
+  validateAnElementIsSelected(element){
+    cy.get(element).should('have.class', 'selected')
+  }
   validateAnElementHasText(element, text){
     cy.get(element).should('have.text', text)
   }

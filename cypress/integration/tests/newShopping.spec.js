@@ -41,28 +41,28 @@ describe("Should test shopping flow", () => {
         productPage.chooseColorSizeAddToCartAndValidate()
         addToCartModal.continueShoppingAndValidate()
     })
-    it('should check item is added and go to dresses', () => {
-        homePage.clickDressesLinkAndValidate(1)
-    })
-    it('should choose 2 dresses to compare', () => {
-        searchResultPage.chooseTwoDressesToCompareAndValidate()
-    })
-    it('should choose the 20% discount dress and go to checkout', () => {
-        productComparisonPage.addToCartProductAndValidate()
-        addToCartModal.proceedToCheckoutAndValidate(2)
-        shoppingCartPage.clickProceedToCheckoutSummaryAndValidate(testData.pageNavigation.authentication)
-        shoppingCartPage.createNewAccountWIthExistingEmaillAndValidate()
-    })
-    it.skip('should create a new account',()=>{
-        shoppingCartPage.createNewAccountAndValidate()
-        accountCreationPage.fillOutCreationForm()
-    })
-    it('should complete checkout process', () => {
-        shoppingCartPage.loginAndValidate(testData.pageNavigation.addresses)
-        shoppingCartPage.clickProceedToCheckoutStepsAndValidate(testData.pageNavigation.shipping)
-        shoppingCartPage.checkTermsOfServiceAndValidate()
-        shoppingCartPage.clickProceedToCheckoutStepsAndValidate(testData.pageNavigation.payment)
-        shoppingCartPage.choosePaymentMethod(testData.pageNavigation.checkMethod)
-        shoppingCartPage.clickProceedToCheckoutStepsAndValidate(testData.pageNavigation.confirmation)
-    })
+    // it('should check item is added and go to dresses', () => {
+    //     homePage.clickDressesLinkAndValidate(1)
+    // })
+    // it('should choose 2 dresses to compare', () => {
+    //     searchResultPage.chooseTwoDressesToCompareAndValidate()
+    // })
+    // it('should choose the 20% discount dress and go to checkout', () => {
+    //     productComparisonPage.addToCartProductAndValidate()
+    //     addToCartModal.proceedToCheckoutAndValidate(2)
+    //     shoppingCartPage.clickProceedToCheckoutSummaryAndValidate(testData.pageNavigation.authentication)
+    //     shoppingCartPage.createNewAccountWIthExistingEmaillAndValidate()
+    // })
+    // it.skip('should create a new account',()=>{
+    //     shoppingCartPage.createNewAccountAndValidate()
+    //     accountCreationPage.fillOutCreationForm()
+    // })
+    // it('should complete checkout process', () => {
+    //     shoppingCartPage.loginAndValidate(testData.pageNavigation.addresses)
+    //     shoppingCartPage.clickProceedToCheckoutStepsAndValidate(testData.pageNavigation.shipping)
+    //     shoppingCartPage.checkTermsOfServiceAndValidate()
+    //     shoppingCartPage.clickProceedToCheckoutStepsAndValidate(testData.pageNavigation.payment)
+    //     shoppingCartPage.choosePaymentMethod(testData.pageNavigation.checkMethod)
+    //     shoppingCartPage.clickProceedToCheckoutStepsAndValidate(testData.pageNavigation.confirmation)
+    // })
 })

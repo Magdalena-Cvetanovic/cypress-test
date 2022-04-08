@@ -23,7 +23,10 @@ export default class ProductPage extends Validaitons{
         return cy.get(this.elementsPage.modalOkBtn)
     }
     getColors(){
-        return cy.get(this.elementsPage.getColors(testData.product.color))
+        return this.elementsPage.getColors(testData.product.color)
+    }
+    getColor(){
+        return cy.get(this.getColors())
     }
     getSizes(){
         return cy.get(this.elementsPage.sizes)
@@ -56,17 +59,25 @@ export default class ProductPage extends Validaitons{
         this.validateAnElementIsNotVisible(this.elementsPage.modal)
     }
     chooseColor(){
-        this.getColors(testData.product.color).click()
+        this.getColor(testData.product.color).click()
+    }
+    validateCorrectColorIsSelected(){
+        this.validateAnElementIsSelected(this.getColors())
     }
     chooseSize(){
         this.getSizes().select(testData.product.size)
+    }
+    validateCorrectSizeIsSelected(){
+        this.validateAnElementHasText(this.elementsPage.selectedSize, testData.product.size)
     }
     clickAddToCart(){
         this.getAddToCartBtn().click()
     }
     chooseColorSizeAddToCartAndValidate(){
         this.chooseColor()
+        this.validateCorrectColorIsSelected()
         this.chooseSize()
+        this.validateCorrectSizeIsSelected()
         this.clickAddToCart()
     }
 

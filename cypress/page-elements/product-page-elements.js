@@ -7,6 +7,7 @@ export default class ProductPageElements{
     sendBtn = '#sendEmail'
     modalOkBtn = '[value=OK]'
     sizes = '#group_1'
+    selectedSize = '#uniform-group_1>span'
     addToCartBtn = '#add_to_cart>button'
     modalText = '#send_friend_form>.page-subheading'
     modal = 'fancybox-skin'
