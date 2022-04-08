@@ -7,6 +7,12 @@ import Validaitons from "../support/validations";
 export default class ProductPage extends Validaitons{
     elementsPage = new ProductPageElements()
 
+    getProductName(){
+        return cy.get(this.elementsPage.productName)
+    }
+    getProductPrice(){
+        return cy.get(this.elementsPage.productPrice)
+    }
     getSendToAFriendBtn(){
         return cy.get(this.elementsPage.sendToAFriendBtn)
     }
@@ -33,6 +39,16 @@ export default class ProductPage extends Validaitons{
     }
     getAddToCartBtn(){
         return cy.get(this.elementsPage.addToCartBtn)
+    }
+    validateCorrectProductIsOpened(){
+        this.getProductName().invoke('text').then((productName)=>{
+            cy.get('@productName').should('equal', productName)
+        })
+    }
+    validateProductPricesMatch(){
+        this.getProductPrice().invoke('text').invoke('split','$').its(1).then((productPrice)=>{
+            cy.get('@productPrice').should('equal',productPrice)
+        })
     }
     clickSendToAFriend(){
         this.getSendToAFriendBtn().click()

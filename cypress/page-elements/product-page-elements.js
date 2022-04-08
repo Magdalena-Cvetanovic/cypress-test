@@ -1,6 +1,8 @@
 ///<reference types= "cypress"/>
 
 export default class ProductPageElements{
+    productName = '[itemprop="name"]'
+    productPrice = '#our_price_display'
     sendToAFriendBtn = '#send_friend_button'
     friendsNameInput = '#friend_name'
     friendsEmailInput = '#friend_email'

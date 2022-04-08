@@ -25,12 +25,30 @@ export default class SearchResultPage extends Validaitons {
     getSearchedTerm(){
         return this.elementPage.searchedTerm
     }
+    getProductPrice(){
+        return this.elementPage.productPrice
+    }
+    getProductName(){
+        return this.elementPage.productName
+    }
     validateCorrectTermIsSearched(){
         this.validateAnElementContainsText(this.getSearchedTerm(), testData.search.criteria)
     }
-    openFirstProductAndValidate(){
-        this.getFirstProduct().eq(0).click()
-        this.validateTheUrlHasChanged(testData.urlContents.product)
+    openFirstProduct(){
+        this.getProductNameAndPrice()
+        this.getListOfProducts().find('a').eq(0).click()
+    }
+    getProductNameAndPrice(){
+        this.getListOfProducts().each(($el)=>{
+            cy.get($el).find(this.getProductName()).invoke('attr', 'title').then((productName)=>{
+                cy.wrap(productName).as('productName')
+            })
+            cy.get($el).find(this.getProductPrice()).invoke('text').invoke('split', '$').its(1).
+            invoke('split', '\t').its(0).
+            then((productPrice)=>{
+                cy.wrap(productPrice).as('productPrice')
+            })
+        })
     }
     collectElementsWithDiscount(){
         this.getListOfProducts().each(($el) => {
