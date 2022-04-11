@@ -28,24 +28,30 @@ describe("Should test shopping flow", () => {
         Cypress.Cookies.preserveOnce(testData.cookies.cartItems)
     })
 
-    it('should conduct search,open the first product, recommend to a friend, choose color, size, and add to cart', () => {
-        homePage.conductSearch()
-        searchResultPage.validateCorrectTermIsSearched()
-        searchResultPage.openFirstProduct()
-        productPage.validateCorrectProductIsOpened()
-        productPage.validateProductPricesMatch()
-        productPage.conductSendToAFriendAndValidate()
-        productPage.chooseColorSizeAddToCartAndValidate()
-        addToCartModal.continueShoppingAndValidate()
+    // it('should conduct search,open the first product, recommend to a friend, choose color, size, and add to cart', () => {
+    //     homePage.conductSearch()
+    //     searchResultPage.validateCorrectTermIsSearched()
+    //     searchResultPage.openFirstProduct()
+    //     productPage.validateCorrectProductIsOpened()
+    //     productPage.validateProductPricesMatch()
+    //     productPage.conductSendToAFriendAndValidate()
+    //     productPage.chooseColorSizeAddToCartAndValidate()
+    //     addToCartModal.continueShoppingAndValidate()
+        
 
+    // })
+
+    it('should check item is added and go to dresses', () => {
+        homePage.clickDressesLinkAndValidate(0)
     })
+    it('should choose 2 dresses to compare', () => {
+        searchResultPage.findProductPrices()
+        cy.log(searchResultPage.getProductPrices())
+        searchResultPage.findProductsLowerThan28Dollars()
+        searchResultPage.findLowestProducts()
 
-    // it('should check item is added and go to dresses', () => {
-    //     homePage.clickDressesLinkAndValidate(1)
-    // })
-    // it('should choose 2 dresses to compare', () => {
-    //     searchResultPage.chooseTwoDressesToCompareAndValidate()
-    // })
+        searchResultPage.chooseTwoDressesToCompareAndValidate()
+    })
     // it('should choose the 20% discount dress and go to checkout', () => {
     //     productComparisonPage.addToCartProductAndValidate()
     //     addToCartModal.proceedToCheckoutAndValidate(2)

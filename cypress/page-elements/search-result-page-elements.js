@@ -9,4 +9,7 @@ export default class SearchResultPageElements{
     addToCompareBtn = '.add_to_compare'
     compareBtn = '.bt_compare_bottom'
     productsWithDiscount = []
+    productPrices = []
+    lowestProducts = []
+    test = []
 }
