@@ -37,7 +37,10 @@ export default class SearchResultPage extends Validaitons {
         return this.pageElements.productPrices
     }
     getLowestPrices(){
-        this.pageElements.lowestProducts
+        this.pageElements.lowestProductsValue
+    }
+    getProductsWithLowestValuesToCompare(){
+        return cy.get(this.pageElements.lowestProductsToCompare)
     }
     validateCorrectTermIsSearched() {
         this.validateAnElementContainsText(this.getSearchedTerm(), testData.search.criteria)
@@ -88,6 +91,7 @@ export default class SearchResultPage extends Validaitons {
            })
         })
     }
+    //goes through the array of items and tries to add them to compare section
     hoverToProductAndClickAddToCompare() {
         this.getProductsWithDiscount().each(($el) => {
             cy.get(this.pageElements.compareBtn).find('strong').invoke('text').then((numberOfItems) => {
@@ -97,6 +101,17 @@ export default class SearchResultPage extends Validaitons {
                 cy.get(this.pageElements.compareBtn).find('strong').invoke('text').should('equal', `${(Number(numberOfItems) + 1)}`);
             })
         })
+    }
+    //finds two products with the lowest value to compare
+    findProductsWithLowestValueToCompare(){
+        this.getListOfProducts().each(($el)=>{
+            cy.get('@lowestProductPrices').then((price)=>{
+                if($el.text().includes(price[0])||$el.text().includes(price[1])){
+                    this.pageElements.lowestProductsToCompare.push($el)
+                }
+            })
+        })
+        cy.wrap(this.pageElements.lowestProductsToCompare)
     }
     clickCompareBtn() {
         this.getCompareBtn().click()
@@ -120,16 +135,16 @@ export default class SearchResultPage extends Validaitons {
     //     })
     //     cy.wrap(this.pageElements.lowestProducts).as('lowestPrices')
     // }
+
     //sorts the array and then pushes the first two values in a new array
     findLowestProducts(){
         cy.get('@listOfPrices').then((prices)=>{
             prices.sort()
             cy.log(prices)
-            this.pageElements.lowestProducts.push(prices[0])
-            this.pageElements.lowestProducts.push(prices[1])
+            this.pageElements.lowestProductsValue.push(prices[0])
+            this.pageElements.lowestProductsValue.push(prices[1])
         })
-        cy.wrap(this.pageElements.lowestProducts).as('lowestProductPrices')
+        cy.wrap(this.pageElements.lowestProductsValue).as('lowestProductPrices')
     }
-
 
 }

@@ -47,8 +47,8 @@ describe("Should test shopping flow", () => {
     it('should choose 2 dresses to compare', () => {
         searchResultPage.findProductPrices()
         cy.log(searchResultPage.getProductPrices())
-        searchResultPage.findProductsLowerThan28Dollars()
         searchResultPage.findLowestProducts()
+        searchResultPage.findProductsWithLowestValueToCompare()
 
         searchResultPage.chooseTwoDressesToCompareAndValidate()
     })

@@ -10,6 +10,6 @@ export default class SearchResultPageElements{
     compareBtn = '.bt_compare_bottom'
     productsWithDiscount = []
     productPrices = []
-    lowestProducts = []
-    test = []
+    lowestProductsValue = []
+    lowestProductsToCompare = []
 }
