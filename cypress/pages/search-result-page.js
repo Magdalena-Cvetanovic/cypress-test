@@ -70,6 +70,7 @@ export default class SearchResultPage extends Validaitons {
         })
         cy.wrap(this.getProductPrices()).as('listOfPrices')
     }
+    //finds products with a discount
     collectElementsWithDiscount() {
         this.getListOfProducts().each(($el) => {
             if ($el.text().includes('-') && $el.text().includes('%')) {
@@ -77,6 +78,7 @@ export default class SearchResultPage extends Validaitons {
             }
         })
     }
+    //same as the method above, but with a slightly different logic 
     collectProductsWithDiscount(){
         this.getListOfProducts().each(($el)=>{
            cy.get($el).find('.content_price').first().then(($ele)=>{
@@ -85,15 +87,12 @@ export default class SearchResultPage extends Validaitons {
                }
            })
         })
-        cy.wrap(this.pageElements.productsWithDiscount).as('discount')
     }
     hoverToProductAndClickAddToCompare() {
         this.getProductsWithDiscount().each(($el) => {
             cy.get(this.pageElements.compareBtn).find('strong').invoke('text').then((numberOfItems) => {
                 cy.get($el).invoke('show');
-                cy.get($el).find(this.pageElements.addToCompareBtn).click({
-                    force: true
-                });
+                cy.get($el).find(this.pageElements.addToCompareBtn).click({force: true});
                 this.getCompareBtn().should('be.enabled');
                 cy.get(this.pageElements.compareBtn).find('strong').invoke('text').should('equal', `${(Number(numberOfItems) + 1)}`);
             })
