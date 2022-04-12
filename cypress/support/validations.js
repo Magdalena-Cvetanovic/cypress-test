@@ -16,12 +16,15 @@ export default class Validaitons{
   validateAnElementIsVisible(element){
     cy.get(element).should('be.visible')
 }
-  validateAnElementIsNotVisible(element){
-    cy.get(element).should('not.exist')
+  validateAnElementShouldExist(element, shouldExist){
+    cy.get(element).should(`${shouldExist ? '': 'not.'}exist`)
 }
   validateAnElementIsChecked(element){
     cy.get(element).should('be.checked')
 }
+  validateAnElementIsSelected(element){
+    cy.get(element).should('have.class', 'selected')
+  }
   validateAnElementHasText(element, text){
     cy.get(element).should('have.text', text)
   }

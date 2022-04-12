@@ -69,7 +69,7 @@ export default class CheckoutPage extends Validaitons{
         this.validateAnElementIsChecked(this.pageElements.checkbox)
     }
     choosePaymentMethod(page){
-        this.getPaymentMethod(testData.paymentMethod.check).click()
+        this.getPaymentMethod(testData.paymentMethod.bank).click()
         this.validateTheUserIsOnTheCorrectPage(page)
     }
     

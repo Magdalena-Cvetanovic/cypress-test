@@ -25,6 +25,7 @@ export default class AddToCartModal extends Validaitons{
         this.clickContinueShopping()
     }
     proceedToCheckoutAndValidate(item){
+        this.validateAnElementShouldExist(this.pageElements.addedProductDetails, true)
         this.clickProceedToCheckOut()
         this.validateTheUserIsOnTheCorrectPage(testData.pageNavigation.shoppingCart)
         this.validateTheCartHasItems(item)
