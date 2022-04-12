@@ -12,13 +12,17 @@ export default class HomePage extends Validaitons{
     getDressesLink(){
         return cy.get(this.pageElements.dressesLink)
     }
+    getDresseNav(){
+        return cy.get(this.pageElements.dress).eq(1)
+    }
     
     conductSearch(){
         this.getSearchBar().type(`${testData.search.criteria}{enter}`)
     }
 
     clickDressesLinkAndValidate(item){
-        this.getDressesLink().click()
+        // this.getDressesLink().click()
+        this.getDresseNav().click()
         this.validateTheUserIsOnTheCorrectPage(testData.pageNavigation.dressPage)
         this.validateTheCartHasItems(item)
     }
