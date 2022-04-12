@@ -48,6 +48,7 @@ export default class SearchResultPage extends Validaitons {
     openFirstProduct() {
         this.getProductNameAndPrice()
         this.getListOfProducts().find('a').eq(0).click()
+        this.validateUrlChanged(testData.urlContents.product)
     }
     getProductNameAndPrice() {
         this.getListOfProducts().each(($el) => {

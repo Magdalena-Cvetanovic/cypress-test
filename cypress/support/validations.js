@@ -34,6 +34,9 @@ export default class Validaitons{
   validateTheCartHasItems(text){
     cy.get(this.noOfCartItems).should('has.text',text)
   }
+  validateUrlChanged(text){
+    cy.url().should('contain',text)
+  }
 
   
 }
