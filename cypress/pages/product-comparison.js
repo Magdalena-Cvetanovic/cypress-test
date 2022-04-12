@@ -26,10 +26,22 @@ export default class ProductComparisonPage extends Validaitons{
             }
         })
     }
+    addToCartCheaperDress(){
+        this.getProducts().each(($el)=>{
+            cy.get('@lowestProductPrices').then((price)=>{
+                cy.get($el).find('span.product-price').first().invoke('text').
+                invoke('split', '$').its(1).then((productPrice)=>{
+                    if(Number(productPrice)===price[0]){
+                        cy.get($el).find(this.pageElements.addToCart).click()
+                    }
+                })
+            })
+        })
+    }
     addToCartProductAndValidate(){
         this.validateTheUserIsOnTheCorrectPage(testData.pageNavigation.comparison)
         this.getProductsToCompare()
-        this.addToCart20DiscountDress()
+        this.addToCartCheaperDress()
     }
 
     

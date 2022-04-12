@@ -72,7 +72,7 @@ export default class ProductPage extends Validaitons{
         this.validateAnElementContainsText(this.elementsPage.modalText,testData.sendToAFriend.modalText)
         this.clickSend()
         this.clickOk()
-        this.validateAnElementIsNotVisible(this.elementsPage.modal)
+        this.validateAnElementShouldExist(this.elementsPage.modal, false)
     }
     chooseColor(){
         this.getColor(testData.product.color).click()

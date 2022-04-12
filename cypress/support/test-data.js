@@ -23,6 +23,7 @@ export const testData = {
         'shipping' : 'Shipping',
         'payment' : 'payment',
         'checkMethod' : 'Check',
+        'bankMethod': ' Bank-wire payment.',
         'confirmation': 'Order confirmation',
         'comparison': 'Product Comparison'
     },

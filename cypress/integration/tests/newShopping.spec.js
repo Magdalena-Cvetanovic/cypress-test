@@ -28,46 +28,34 @@ describe("Should test shopping flow", () => {
         Cypress.Cookies.preserveOnce(testData.cookies.cartItems)
     })
 
-    // it('should conduct search,open the first product, recommend to a friend, choose color, size, and add to cart', () => {
-    //     homePage.conductSearch()
-    //     searchResultPage.validateCorrectTermIsSearched()
-    //     searchResultPage.openFirstProduct()
-    //     productPage.validateCorrectProductIsOpened()
-    //     productPage.validateProductPricesMatch()
-    //     productPage.conductSendToAFriendAndValidate()
-    //     productPage.chooseColorSizeAddToCartAndValidate()
-    //     addToCartModal.continueShoppingAndValidate()
-        
-
-    // })
-
-    it('should check item is added and go to dresses', () => {
-        homePage.clickDressesLinkAndValidate(0)
+    it('should conduct search,open the first product, recommend to a friend, choose color, size, and add to cart', () => {
+        homePage.conductSearch()
+        searchResultPage.validateCorrectTermIsSearched()
+        searchResultPage.openFirstProduct()
+        productPage.validateCorrectProductIsOpened()
+        productPage.validateProductPricesMatch()
+        productPage.conductSendToAFriendAndValidate()
+        productPage.chooseColorSizeAddToCartAndValidate()
+        addToCartModal.continueShoppingAndValidate()
     })
     it('should choose 2 dresses to compare', () => {
+        homePage.clickDressesLinkAndValidate(1)
         searchResultPage.findProductPrices()
         cy.log(searchResultPage.getProductPrices())
         searchResultPage.findLowestProducts()
         searchResultPage.findProductsWithLowestValueToCompare()
-
         searchResultPage.chooseTwoDressesToCompareAndValidate()
+        productComparisonPage.addToCartProductAndValidate()
+        addToCartModal.proceedToCheckoutAndValidate(2)
+        shoppingCartPage.clickProceedToCheckoutSummaryAndValidate(testData.pageNavigation.authentication)
+        shoppingCartPage.createNewAccountWIthExistingEmaillAndValidate()
+        // shoppingCartPage.createNewAccountAndValidate()
+        // accountCreationPage.fillOutCreationForm()
+        shoppingCartPage.loginAndValidate(testData.pageNavigation.addresses)
+        shoppingCartPage.clickProceedToCheckoutStepsAndValidate(testData.pageNavigation.shipping)
+        shoppingCartPage.checkTermsOfServiceAndValidate()
+        shoppingCartPage.clickProceedToCheckoutStepsAndValidate(testData.pageNavigation.payment)
+        shoppingCartPage.choosePaymentMethod(testData.pageNavigation.bankMethod)
+        shoppingCartPage.clickProceedToCheckoutStepsAndValidate(testData.pageNavigation.confirmation)
     })
-    // it('should choose the 20% discount dress and go to checkout', () => {
-    //     productComparisonPage.addToCartProductAndValidate()
-    //     addToCartModal.proceedToCheckoutAndValidate(2)
-    //     shoppingCartPage.clickProceedToCheckoutSummaryAndValidate(testData.pageNavigation.authentication)
-    //     shoppingCartPage.createNewAccountWIthExistingEmaillAndValidate()
-    // })
-    // it.skip('should create a new account',()=>{
-    //     shoppingCartPage.createNewAccountAndValidate()
-    //     accountCreationPage.fillOutCreationForm()
-    // })
-    // it('should complete checkout process', () => {
-    //     shoppingCartPage.loginAndValidate(testData.pageNavigation.addresses)
-    //     shoppingCartPage.clickProceedToCheckoutStepsAndValidate(testData.pageNavigation.shipping)
-    //     shoppingCartPage.checkTermsOfServiceAndValidate()
-    //     shoppingCartPage.clickProceedToCheckoutStepsAndValidate(testData.pageNavigation.payment)
-    //     shoppingCartPage.choosePaymentMethod(testData.pageNavigation.checkMethod)
-    //     shoppingCartPage.clickProceedToCheckoutStepsAndValidate(testData.pageNavigation.confirmation)
-    // })
 })
