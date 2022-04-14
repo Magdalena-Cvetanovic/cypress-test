@@ -95,11 +95,11 @@ export default class SearchResultPage extends Validaitons {
     //goes through the array of items and tries to add them to compare section
     hoverToProductAndClickAddToCompare() {
         this.getProductsWithDiscount().each(($el) => {
-            cy.get(this.pageElements.compareBtn).find('strong').invoke('text').then((numberOfItems) => {
+            cy.get(this.pageElements.compareBtn).find(this.pageElements.compareBtnNumber).invoke('text').then((numberOfItems) => {
                 cy.get($el).invoke('show');
                 cy.get($el).find(this.pageElements.addToCompareBtn).click({force: true});
                 this.getCompareBtn().should('be.enabled');
-                cy.get(this.pageElements.compareBtn).find('strong').invoke('text').should('equal', `${(Number(numberOfItems) + 1)}`);
+                cy.get(this.pageElements.compareBtn).find(this.pageElements.compareBtnNumber).invoke('text').should('equal', `${(Number(numberOfItems) + 1)}`);
             })
         })
     }
